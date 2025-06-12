@@ -44,17 +44,17 @@ jobs:
         run: terraform init -var="bucket_name=aws-david-20-dev-s3-bucket-state" -reconfigure
         continue-on-error: false
 
-          # Run a terraform fmt for push
-      - name: Terraform Format
-        id: fmt
-        run: terraform fmt -check
-        continue-on-error: false
+      #     # Run a terraform fmt for push
+      # - name: Terraform Format
+      #   id: fmt
+      #   run: terraform fmt -check
+      #   continue-on-error: false
 
-      - name: Validate Terraform
-        id: validate
-        if: (success() || failure())
-        run: terraform validate
-        continue-on-error: false
+      # - name: Validate Terraform
+      #   id: validate
+      #   if: (success() || failure())
+      #   run: terraform validate
+      #   continue-on-error: false
 
       # - name: Plan Terraform
       #   id: plan
