@@ -41,7 +41,7 @@ jobs:
 
       - name: Initialize Terraform
         id: init
-        run: terraform init -var="bucket_name=aws-david-20-dev-s3-bucket-state" -reconfigure
+        run: terraform init -var="bucket_name=${{ secrets.AWS_BUCKET }}" 
         continue-on-error: false
 
           # Run a terraform fmt for push
