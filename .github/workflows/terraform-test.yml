@@ -32,6 +32,7 @@ jobs:
       - name: Initialize Terraform
         id: init
         run: terraform init
+        continue-on-error: false
 
           # Run a terraform fmt for push
       - name: Terraform Format

@@ -6,7 +6,7 @@ terraform {
     region       = "eu-west-3"
     profile      = "761018888105_AdministratorAccess"
     encrypt      = true
-    use_lockfile = true 
+    #use_lockfile = true 
   }
   required_providers {
     aws = {
