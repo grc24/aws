@@ -36,11 +36,11 @@ jobs:
         if: (success() || failure())
         run: terraform validate
 
-      - name: Plan Terraform
-        id: plan
-        if: (success() || failure())
-        env:
-          TF_IN_AUTOMATION: true
-          TF_WORKSPACE: default
-        run: terraform plan
+      # - name: Plan Terraform
+      #   id: plan
+      #   if: (success() || failure())
+      #   env:
+      #     TF_IN_AUTOMATION: true
+      #     TF_WORKSPACE: default
+      #   run: terraform plan
 
