@@ -41,7 +41,7 @@ jobs:
 
       - name: Initialize Terraform
         id: init
-        run: terraform init -reconfigure
+        run: terraform init -var="bucket_name=aws-david-20-dev-s3-bucket-state" -reconfigure
         continue-on-error: false
 
           # Run a terraform fmt for push
