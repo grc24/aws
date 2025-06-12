@@ -31,7 +31,7 @@ jobs:
       - name: Set up Terraform
         uses: hashicorp/setup-terraform@v1
         with:
-          terraform_version: 1.5.0
+          terraform_version: 1.12.0
       
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
@@ -41,7 +41,7 @@ jobs:
 
       - name: Initialize Terraform
         id: init
-        run: terraform init -reconfigure
+        run: terraform init -var="bucket_name=aws-david-20-dev-s3-bucket-state" -reconfigure
         continue-on-error: false
 
           # Run a terraform fmt for push
