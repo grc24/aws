@@ -1,5 +1,12 @@
 # write github actions to test terraform code
 name: Terraform Test
+
+
+defaults:
+  run:
+    working-directory: ./envs/dev
+# This workflow will run on pushes to the main branch and on pull requests targeting the main branch.
+
 on:
   push:
     branches:
@@ -43,4 +50,5 @@ jobs:
       #     TF_IN_AUTOMATION: true
       #     TF_WORKSPACE: default
       #   run: terraform plan
+
 
