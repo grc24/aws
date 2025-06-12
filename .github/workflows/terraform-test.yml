@@ -1,0 +1,46 @@
+# write github actions to test terraform code
+name: Terraform Test
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+
+jobs:
+  terraform:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Terraform
+        uses: hashicorp/setup-terraform@v1
+        with:
+          terraform_version: 1.5.0
+
+      - name: Initialize Terraform
+        id: init
+        run: terraform init
+
+          # Run a terraform fmt for push
+      - name: Terraform Format
+        id: fmt
+        run: terraform fmt -check
+
+      - name: Validate Terraform
+        id: validate
+        if: (success() || failure())
+        run: terraform validate
+
+      - name: Plan Terraform
+        id: plan
+        if: (success() || failure())
+        env:
+          TF_IN_AUTOMATION: true
+          TF_WORKSPACE: default
+        run: terraform plan
+
