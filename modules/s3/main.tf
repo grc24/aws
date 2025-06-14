@@ -37,8 +37,8 @@ resource "aws_s3_bucket_lifecycle_configuration" "main" {
   bucket = aws_s3_bucket.main.id
 
   rule {
-    id      = "Expire old versions"
-    status  = "Enabled"
+    id     = "Expire old versions"
+    status = "Enabled"
     filter {
       prefix = "terraform.tfstate"
     }

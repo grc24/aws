@@ -10,7 +10,7 @@ resource "aws_iam_openid_connect_provider" "main" {
   ]
 
   tags = {
-    Name = "GitHub Actions OIDC Provider"
+    Name        = "GitHub Actions OIDC Provider"
     Environment = var.Environment
   }
 }
@@ -19,7 +19,7 @@ resource "aws_iam_openid_connect_provider" "main" {
 resource "aws_iam_role" "main" {
   name = var.role_name
 
-  depends_on = [ aws_iam_openid_connect_provider.main ]
+  depends_on = [aws_iam_openid_connect_provider.main]
 
   assume_role_policy = jsonencode({
     Version = "2012-10-17",
@@ -32,7 +32,7 @@ resource "aws_iam_role" "main" {
         Action = "sts:AssumeRoleWithWebIdentity",
         Condition = {
           StringEquals = {
-            "token.actions.githubusercontent.com:aud" =  "${var.openid_connect_client_id}",
+            "token.actions.githubusercontent.com:aud" = "${var.openid_connect_client_id}",
             "token.actions.githubusercontent.com:sub" = "repo:${var.github_repository}:ref:refs/heads/${var.github_branch}"
           }
         }
@@ -54,7 +54,7 @@ resource "aws_iam_policy" "main" {
   policy = jsonencode({
     Version = "2012-10-17",
     Statement = [
-          {
+      {
         Effect = "Allow",
         Action = [
           "s3:ListBucket",
