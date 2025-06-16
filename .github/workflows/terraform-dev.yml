@@ -56,13 +56,13 @@ jobs:
         run: terraform validate
         continue-on-error: false
 
-      # - name: Plan Terraform
-      #   id: plan
-      #   if: (success() || failure())
-      #   env:
-      #     TF_IN_AUTOMATION: true
-      #     TF_WORKSPACE: default
-      #   run: terraform plan
+      - name: Plan Terraform
+        id: plan
+        if: (success() || failure())
+        env:
+          TF_IN_AUTOMATION: true
+          TF_WORKSPACE: default
+        run: terraform plan
       
       # - name: Apply Terraform
       #   id: apply
