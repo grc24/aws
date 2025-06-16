@@ -50,11 +50,11 @@ jobs:
         run: terraform fmt -check
         continue-on-error: false
 
-      # - name: Validate Terraform
-      #   id: validate
-      #   if: (success() || failure())
-      #   run: terraform validate
-      #   continue-on-error: false
+      - name: Validate Terraform
+        id: validate
+        if: (success() || failure())
+        run: terraform validate
+        continue-on-error: false
 
       # - name: Plan Terraform
       #   id: plan
