@@ -60,7 +60,7 @@ resource "aws_iam_policy" "main" {
   policy = jsonencode({
     Version = "2012-10-17",
     Statement = [
-    
+
       {
         Effect = "Allow",
         Action = [
@@ -102,7 +102,7 @@ resource "aws_iam_role_policy_attachment" "github_actions_s3_policy_attachment" 
 
 #AllowOIDCProviderAccess
 resource "aws_iam_policy" "allow_oidc_provider_access" {
-  name = "AllowOIDCProviderAccess"
+  name        = "AllowOIDCProviderAccess"
   description = "Policy for GitHub Actions to access the OIDC provider"
   tags = {
     Name        = "Allow OIDC Provider Access"
